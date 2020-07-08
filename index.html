@@ -12,6 +12,8 @@
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
     <!-- D3 JS -->
   <script src="https://d3js.org/d3.v4.min.js"></script>
+  <script src="https://d3js.org/d3-dsv.v1.min.js"></script>
+  <script src="https://d3js.org/d3-fetch.v1.min.js"></script>
 
   <!-- Load billboard.js with style -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/billboard.js/1.5.1/billboard.js"></script>  
@@ -23,6 +25,7 @@
   <script src="https://code.highcharts.com/modules/export-data.js"></script>
   <script src="https://code.highcharts.com/modules/accessibility.js"></script>
   <!-- Highchart -->
+  
 </head>
 <body>
 
@@ -48,12 +51,52 @@
       <div id="container"></div>
     </div>
     <div class="col-sm-4">
-      <h3>Column 3</h3>        
-      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit...</p>
-      <p>Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris...</p>
+      <h3>Column 3</h3>       
+      <output id="out">
+        file contents will appear here
+    </output> 
+      <!-- <input type="file"> -->
     </div>
   </div>
 </div>
+<script>
+    // read file with d3 js
+    d3.csv("https://raw.githubusercontent.com/jumadilakbar/viusualisasi-data/master/data/mock.csv", function(data){
+    console.log(data);
+});
+    // $.ajaxPrefilter( 'script', function( options ) {
+    //     options.crossDomain = true;
+    // });
+    // $.ajax({
+    //     type: "GET",
+    //     url: "data/mock.csv",
+    //     dataType: "script",
+    //     success: function(data) {
+    //         alert("worked");
+    //     },
+    //     error: function (request, status, error) {
+    //         alert(request.responseText);
+    //     }
+    // });
+//    var input = '/data/mock.csv';
+//    Papa.parse(input.files[0], {
+//         complete: function(results) {
+//             console.log("Finished:", results.data);
+//         }
+//     });
+    // const reader = new FileReader()
+    // reader.readAsDataURL(input.files)
+    // reader.readAsText(input)
+    // function read(input) {
+        // const csv = input.files[0]
+        // reader.readAsText(csv)
+    // }
+
+    // reader.onload = function (e) {
+    //     document.querySelector('.output').innerText = e.target.result;
+    // }
+</script>
+
 
 <script>
     var chart = bb.generate({
