@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Visualisasi Data</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/billboard.js/1.5.1/billboard.css">
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
+    <!-- D3 JS -->
+  <script src="https://d3js.org/d3.v4.min.js"></script>
+
+  <!-- Load billboard.js with style -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/billboard.js/1.5.1/billboard.js"></script>  
+  
+  <!-- Highchart -->
+  <script src="https://code.highcharts.com/highcharts.js"></script>
+  <script src="https://code.highcharts.com/modules/series-label.js"></script>
+  <script src="https://code.highcharts.com/modules/exporting.js"></script>
+  <script src="https://code.highcharts.com/modules/export-data.js"></script>
+  <script src="https://code.highcharts.com/modules/accessibility.js"></script>
+  <!-- Highchart -->
+</head>
+<body>
+
+<div class="text-center">
+    <div class="card bg-dark text-white">
+        <div class="card-body">
+            <h4 class="card-title">Visualisasi Data dari File CSV</h4>
+        </div>
+      </div>
+  
+  <!-- <p>Resize this responsive page to see the effect!</p>  -->
+</div>
+ <br> 
+<div class="container">
+  <div class="row">
+    <div class="col-sm-4">
+      <h3>Column 1</h3>
+      <div id="lineChart"></div>
+     
+    </div>
+    <div class="col-sm-4">
+      <h3>Column 2</h3>
+      <div id="container"></div>
+    </div>
+    <div class="col-sm-4">
+      <h3>Column 3</h3>        
+      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit...</p>
+      <p>Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris...</p>
+    </div>
+  </div>
+</div>
+
+<script>
+    var chart = bb.generate({
+    data: {
+        columns: [
+        ["data1", 30, 200, 100, 400, 150, 250],
+        ["data2", 50, 20, 10, 40, 15, 25]
+        ]
+    },
+    bindto: "#lineChart"
+    });
+
+    setTimeout(function() {
+        chart.load({
+            columns: [
+                ["data1", 230, 190, 300, 500, 300, 400]
+            ]
+        });
+    }, 1000);
+
+    setTimeout(function() {
+        chart.load({
+            columns: [
+                ["data3", 130, 150, 200, 300, 200, 100]
+            ]
+        });
+    }, 1500);
+
+    setTimeout(function() {
+        chart.unload({
+            ids: "data1"
+        });
+    }, 2000);
+</script>
+<script>
+    Highcharts.chart('container', {
+    title: {
+        text: 'Solar Employment Growth by Sector, 2010-2016'
+    },
+
+    subtitle: {
+        text: 'Source: thesolarfoundation.com'
+    },
+
+    yAxis: {
+        title: {
+            text: 'Number of Employees'
+        }
+    },
+
+    xAxis: {
+        accessibility: {
+            rangeDescription: 'Range: 2010 to 2017'
+        }
+    },
+
+    legend: {
+        layout: 'vertical',
+        align: 'right',
+        verticalAlign: 'middle'
+    },
+
+    plotOptions: {
+        series: {
+            label: {
+                connectorAllowed: false
+            },
+            pointStart: 2010
+        }
+    },
+
+    series: [{
+        name: 'Installation',
+        data: [43934, 52503, 57177, 69658, 97031, 119931, 137133, 154175]
+    }, {
+        name: 'Manufacturing',
+        data: [24916, 24064, 29742, 29851, 32490, 30282, 38121, 40434]
+    }, {
+        name: 'Sales & Distribution',
+        data: [11744, 17722, 16005, 19771, 20185, 24377, 32147, 39387]
+    }, {
+        name: 'Project Development',
+        data: [null, null, 7988, 12169, 15112, 22452, 34400, 34227]
+    }, {
+        name: 'Other',
+        data: [12908, 5948, 8105, 11248, 8989, 11816, 18274, 18111]
+    }],
+
+    responsive: {
+        rules: [{
+            condition: {
+                maxWidth: 500
+            },
+            chartOptions: {
+                legend: {
+                    layout: 'horizontal',
+                    align: 'center',
+                    verticalAlign: 'bottom'
+                }
+            }
+        }]
+    }
+
+    });
+</script>
+</body>
+</html>
